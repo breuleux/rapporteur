@@ -104,21 +104,6 @@ wheels = [
 ]
 
 [[package]]
-name = "gifnoc"
-version = "0.6.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "cryptography" },
-    { name = "ovld" },
-    { name = "pyyaml" },
-    { name = "serieux" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/85/ea/a4a49bebc8aa088209d1a9a2b044a9af7f371b20647c9d9cd8a03fc140a4/gifnoc-0.6.1.tar.gz", hash = "sha256:203ba8997e37755f84a4415b2291d17f00fa2c49ee87097c338286fef46e8ee2", size = 39140, upload-time = "2025-09-12T14:24:34.808Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d9/83/177feb44d6a71a8b648e4821a897ebf883d5e5cba3f9500cfa6d6b3371a0/gifnoc-0.6.1-py3-none-any.whl", hash = "sha256:7772ba23653cf0eaed2e4f6dcbf6d7c76f6e43af9771aa9b3fcff4bb2bee4318", size = 9445, upload-time = "2025-09-12T14:24:33.709Z" },
-]
-
-[[package]]
 name = "ovld"
 version = "0.5.13"
 source = { registry = "https://pypi.org/simple" }
@@ -158,13 +143,17 @@ name = "rapporteur"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "gifnoc" },
+    { name = "cryptography" },
+    { name = "pyyaml" },
+    { name = "serieux" },
     { name = "slack-sdk" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "gifnoc", specifier = ">=0.6.1" },
+    { name = "cryptography", specifier = ">=46.0.1" },
+    { name = "pyyaml", specifier = ">=6.0.2" },
+    { name = "serieux", specifier = ">=0.2.9" },
     { name = "slack-sdk", specifier = ">=3.36.0" },
 ]
 

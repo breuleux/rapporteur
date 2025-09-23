@@ -8,7 +8,9 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
-    "gifnoc>=0.6.1",
+    "cryptography>=46.0.1",
+    "pyyaml>=6.0.2",
+    "serieux>=0.2.9",
     "slack-sdk>=3.36.0",
 ]
 

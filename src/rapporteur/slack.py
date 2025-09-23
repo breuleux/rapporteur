@@ -1,35 +1,28 @@
 import socket
 import time
 import traceback
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
-import gifnoc
 from serieux.features.encrypt import Secret
 from slack_sdk import WebClient
 
-from .report import Report
+from .report import Report, Reporter
 from .utils import readable_time
 
 
-@dataclass
-class SlackConfig:
+@dataclass(kw_only=True)
+class SlackReporter(Reporter):
     token: Secret[str]
+    channel: str
     show_logs: int = 15
-    channel_map: dict[str, str] = field(default_factory=dict)
 
+    def __post_init__(self):
+        self.client = WebClient(token=self.token)
 
-class SlackReporter:
-    def __init__(self, channel):
-        self.client = WebClient(token=slack.token)
-        self.channel = slack.channel_map.get(channel, channel)
-
-    def pre_report(self, report: Report):
-        pass
-
-    def status(self, markdown_text: str = None, **kwargs):
+    def log(self, markdown: str = None, **kwargs):
         self.client.chat_postMessage(
             channel=self.channel,
-            markdown_text=markdown_text,
+            markdown_text=markdown,
             **kwargs,
         )
 
@@ -63,8 +56,7 @@ class SlackReporter:
                     },
                 }
             )
-        if report.errlogs:
-            nerr = slack.show_logs
+        if report.errlogs and (nerr := self.show_logs):
             error_lines = []
             for record in list(report.errlogs)[-nerr:]:
                 ts = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(record.created))
@@ -94,6 +86,3 @@ class SlackReporter:
                 else (":warning:" if report.errlogs else ":white_check_mark:")
             ),
         )
-
-
-slack = gifnoc.define("rapporteur.slack", SlackConfig)
