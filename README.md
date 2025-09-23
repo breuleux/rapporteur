@@ -4,6 +4,15 @@
 A simple package to log the result of the execution of a program, as well as status updates, to Slack (and possibly other backends).
 
 
+## Install
+
+```bash
+pip install rapporteur
+# or #
+uv add rapporteur
+```
+
+
 ## Getting the information you need
 
 To make rapporteur work, you need:
