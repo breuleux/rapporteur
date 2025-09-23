@@ -8,7 +8,7 @@ A simple package to log the result of the execution of a program, as well as sta
 
 To make rapporteur work, you need:
 
-1. A Slack app installed in the workspace (https://api.slack.com/apps). Make sure that it has the scope to write to channels, and add it to the relevant channels.
+1. A Slack app installed in the workspace (https://api.slack.com/apps). Make sure that it has the scope to write to channels. Then, add it to the relevant channels (Edit Settings for the channel, go to Integrations, Add App, then select the app).
 2. A token for that app. You can find it in OAuth&Permissions
 3. The channel ID. If you click on the name of a channel, you can see its Channel ID at the bottom, which typically starts with C. If you are in a browser, it is also the last part of the URL.
 
