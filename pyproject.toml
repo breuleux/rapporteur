@@ -1,6 +1,6 @@
 [project]
 name = "rapporteur"
-version = "0.1.0"
+version = "0.1.1"
 description = "Report run status and results to Slack and others"
 readme = "README.md"
 authors = [
