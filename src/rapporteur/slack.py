@@ -75,11 +75,14 @@ class SlackReporter(Reporter):
 
         hostname = socket.gethostname()
         summary = f"[{hostname}] **{report.description}** ran **{sprefix}successfully** in {duration_str}. {icons}"
+        attachments = (
+            [{"blocks": blocks, "fallback": "<error summary>"}] if blocks else []
+        )
 
         self.client.chat_postMessage(
             channel=self.channel,
             markdown_text=summary,
-            attachments=[{"blocks": blocks, "fallback": "<error summary>"}],
+            attachments=attachments,
             icon_emoji=(
                 ":x:"
                 if exception

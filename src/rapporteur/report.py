@@ -1,8 +1,8 @@
 from __future__ import annotations
+
 import logging
 from collections import Counter, deque
-from contextlib import contextmanager
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from logging import LogRecord
 
